@@ -16,6 +16,7 @@ Prusa recommends using a Raspberry Pi Zero W to run [OctoPrint](http://octoprint
 https://www.thingiverse.com/thing:2843889
 
 Resolution: 0.15
+
 Infill: 20% (optional)
 
 ### Raspberry Pi Lid
@@ -23,6 +24,7 @@ Infill: 20% (optional)
 http://www.thingiverse.com/thing:559858
 
 Resolution: 0.1
+
 Infill: 20%
 
 ### Camera Cover
@@ -30,6 +32,7 @@ Infill: 20%
 http://www.thingiverse.com/thing:3366197
 
 Resolution: 0.15-0.2
+
 Infill: 20%
 
 ### Camera Lid
@@ -37,6 +40,7 @@ Infill: 20%
 https://www.thingiverse.com/thing:2352964
 
 Resolution: 0.15-0.2
+
 Infill: 20%
 
 ### Camera Mount
@@ -44,21 +48,24 @@ Infill: 20%
 http://www.thingiverse.com/thing:3146939
 
 Material: PLA should be safe, but PETG is better given its proximity to heat bed
+
 Resolution: 0.15
+
 Infill: 20%
 
 ### Ribbon clips
 
 http://www.thingiverse.com/thing:3189351
 
-Print 4 of these!
+**Print 4 of these!**
 
 Resolution: 0.2
+
 Infill: 10%
 
 ## Setup
 
-1. Flash Raspberry Pi SD card with [OctoPi](https://github.com/guysoft/OctoPi)
+1. Flash Raspberry Pi SD card with [OctoPi](https://github.com/guysoft/OctoPi) image
 2. Set wifi password in `octopi-wpa-supplicant.txt`
 3. Boot up raspberry pi and `ssh pi@octopi.local`
 4. `passwd` to change root password
