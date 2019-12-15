@@ -27,29 +27,15 @@ Resolution: 0.1
 
 Infill: 20%
 
-### Camera Cover
-
-http://www.thingiverse.com/thing:3366197
-
-Resolution: 0.15-0.2
-
-Infill: 20%
-
-### Camera Lid
-
-https://www.thingiverse.com/thing:2352964
-
-Resolution: 0.15-0.2
-
-Infill: 20%
-
 ### Camera Mount
 
-http://www.thingiverse.com/thing:3146939
+https://www.prusaprinters.org/prints/7064-customizable-raspberry-pi-camera-bed-mount-prusa-m/
+
+Includes arm, post, camera holder, and camera lid. Customizable via included OpenSCAD, but the gcode files committed here should work great with an MK3S. This mount does require using a couple of the spare M4 screws included with your Prusa.
 
 Material: PLA should be safe, but PETG is better given its proximity to heat bed
 
-Resolution: 0.15
+Resolution: 0.2
 
 Infill: 20%
 
