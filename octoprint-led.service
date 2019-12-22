@@ -1,0 +1,15 @@
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/prusa-octoprint-setup
+ExecStart=/bin/bash -lc 'sudo python3 led.py'
+Restart=always
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
+KillMode=mixed
+TimeoutStopSec=5

@@ -1,0 +1,4 @@
+RPI.GPIO==0.7.0
+adafruit-blinka==2.4.1
+adafruit-circuitpython-neopixel==3.3.7
+paho-mqtt==1.3.0
