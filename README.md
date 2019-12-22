@@ -2,41 +2,6 @@
 
 Prusa recommends using a Raspberry Pi Zero W to run [OctoPrint](http://octoprint.org/) for your printer. While this is very clean and easy, it is underpowered and you can't get a camera. You also risk the print failing if you are checking its status too often via the UI or app. Here's my setup for attaching a Raspberry Pi 3B+ and camera to a Prusa MK3S printer for a reliable OctoPrint server with a camera. The total cost is about $80.
 
-## Software
-
-1. Install pip3
-
-```bash
-sudo apt-get install -y python3-pip
-```
-
-2. Clone this repo
-
-```bash
-git clone https://github.com/neilgupta/prusa-octoprint-setup.git
-cd prusa-octoprint-setup
-```
-
-3. Install dependencies
-
-```bash
-sudo pip3 install -r requirements.txt
-```
-
-4. Install MQTT plugin in Octoprint, configure it to talk to `hiome.local`
-
-5. Edit `CLIENT_NAME` in `led.py` to match your whatever name you used in MQTT settings in octoprint.
-
-6. Install led systemd service
-
-```bash
-mv octoprint-led.service /etc/systemd/system/octoprint-led.service
-sudo systemctl enable octoprint-led.service
-sudo systemctl start octoprint-led.service
-```
-
-To run the script as a one-off, it's `sudo python3 led.py`
-
 ## Hardware
 
 * Raspberry Pi 3B+
@@ -97,3 +62,40 @@ Infill: 10%
 8. Restart Raspberry Pi
 9. Configure plugins as needed
 10. Happy printing!
+
+## Lighting Software
+
+This repo also includes a script that can control a NeoPixel LED light strip attached to the raspberry pi. It will dynamically change lights based on the status of the printer.
+
+1. Install pip3
+
+```bash
+sudo apt-get install -y python3-pip
+```
+
+2. Clone this repo
+
+```bash
+git clone https://github.com/neilgupta/prusa-octoprint-setup.git
+cd prusa-octoprint-setup
+```
+
+3. Install dependencies
+
+```bash
+sudo pip3 install -r requirements.txt
+```
+
+4. Install MQTT plugin in Octoprint, configure it to talk to `hiome.local`
+
+5. Edit `CLIENT_NAME` in `led.py` to match your whatever name you used in MQTT settings in octoprint.
+
+6. Install led systemd service
+
+```bash
+sudo cp octoprint-led.service /etc/systemd/system/octoprint-led.service
+sudo systemctl enable octoprint-led.service
+sudo systemctl start octoprint-led.service
+```
+
+To run the script as a one-off, it's `sudo python3 led.py`
