@@ -3,7 +3,6 @@ WantedBy=multi-user.target
 
 [Service]
 Type=simple
-User=pi
 WorkingDirectory=/home/pi/prusa-octoprint-setup
 ExecStart=/bin/bash -lc 'sudo python3 led.py'
 Restart=always

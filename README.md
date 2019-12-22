@@ -13,7 +13,7 @@ sudo apt-get install -y python3-pip
 2. Clone this repo
 
 ```bash
-git clone git@github.com:neilgupta/prusa-octoprint-setup.git
+git clone https://github.com/neilgupta/prusa-octoprint-setup.git
 cd prusa-octoprint-setup
 ```
 
