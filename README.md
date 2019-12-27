@@ -105,7 +105,7 @@ To run the script as a one-off, it's `sudo python3 led.py`
 7. Start a print from octoprint!
 
 <div align="center">
-  <a href="http://neilgupta.github.com/prusa-octoprint-setup/prusa.jpeg">
-    <img width="756px" height="1008px" src="http://neilgupta.github.com/prusa-octoprint-setup/prusa.jpeg" alt="My Prusa MK3S" />
+  <a href="https://raw.githubusercontent.com/neilgupta/prusa-octoprint-setup/master/prusa.jpeg">
+    <img width="756px" height="1008px" src="https://raw.githubusercontent.com/neilgupta/prusa-octoprint-setup/master/prusa.jpeg" alt="My Prusa MK3S" />
   </a>
 </div>
