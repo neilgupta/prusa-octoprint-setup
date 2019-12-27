@@ -1,6 +1,6 @@
 # OctoPrint setup for Prusa MK3S
 
-Prusa recommends using a Raspberry Pi Zero W to run [OctoPrint](http://octoprint.org/) for your printer. While this is very clean and easy, it is underpowered and you can't get a camera. You also risk the print failing if you are checking its status too often via the UI or app. Here's my setup for attaching a Raspberry Pi 3B+ and camera to a Prusa MK3S printer for a reliable OctoPrint server with a camera. The total cost is about $80.
+Prusa recommends using a Raspberry Pi Zero W to run [OctoPrint](http://octoprint.org/) for your printer. While this is very clean and easy, it is underpowered and you can't get a camera. You also risk the print failing if you are checking its status too often via the UI or app. Here's my setup for attaching a Raspberry Pi 3B+, camera, and lights to a Prusa MK3S printer for a reliable OctoPrint server with a camera. The total cost is about $100.
 
 ## Hardware
 
@@ -8,6 +8,7 @@ Prusa recommends using a Raspberry Pi Zero W to run [OctoPrint](http://octoprint
 * 16GB microSD Card
 * Raspberry Pi Camera v2
 * 1 meter ribbon cable for camera
+* WS2812 LED light strip
 
 ## Prints
 
@@ -49,7 +50,7 @@ Resolution: 0.2
 
 Infill: 10%
 
-## Setup
+## Octoprint
 
 1. Flash Raspberry Pi SD card with [OctoPi](https://github.com/guysoft/OctoPi) image
 2. Set wifi password in `octopi-wpa-supplicant.txt`
@@ -63,15 +64,15 @@ Infill: 10%
 9. Configure plugins as needed
 10. Happy printing!
 
-## Lighting Software
+## Lighting
 
-This repo also includes a script that can control a NeoPixel LED light strip attached to the raspberry pi. It will dynamically change lights based on the status of the printer.
+This repo also includes a script that can control a WS2812 LED light strip attached to the raspberry pi. It will dynamically change lights based on the status of the printer. I use [these ones](https://www.amazon.com/gp/product/B00JYPJAL2/) but Adafruit's NeoPixels will work well too.
 
-1. Install pip3
+1. Connect lights to raspberry pi
 
-```bash
-sudo apt-get install -y python3-pip
-```
+Trim led strip to 15 pixels so that they fit on the top frame of the MK3S. Solder 3 wires (65cm length each) to connect led strip to 5V, GND, and GPIO pin 18. I also use a [Texas Instruments SN74AHCT125N buffer](https://www.digikey.com/product-detail/en/texas-instruments/SN74AHCT125N/296-4655-5-ND/375798) to ensure correct logic voltage, but this is optional. My Raspberry Pi 3B+ was able to drive the LED strip with 3.3v logic.
+
+Mount the led strip to the bottom of the frame with double sided tape and use 4 zip ties to hold in place, since the heat from the lights + extruder will weaken the tape very quickly.
 
 2. Clone this repo
 
@@ -83,12 +84,13 @@ cd prusa-octoprint-setup
 3. Install dependencies
 
 ```bash
+sudo apt-get install -y python3-pip
 sudo pip3 install -r requirements.txt
 ```
 
-4. Install MQTT plugin in Octoprint, configure it to talk to `hiome.local`
+4. Install MQTT plugin in Octoprint, configure it to talk to `hiome.local`. This assumes you have [Hiome](https://hiome.com)... if not, get on that first! Set the topic format to `hiome/1/sensor/CLIENT_NAME/` where `CLIENT_NAME` is something like "prusa_octopi"
 
-5. Edit `CLIENT_NAME` in `led.py` to match your whatever name you used in MQTT settings in octoprint.
+5. Edit `CLIENT_NAME` in `led.py` to match the name you used in octoprint's MQTT settings above.
 
 6. Install led systemd service
 
@@ -99,3 +101,11 @@ sudo systemctl start octoprint-led.service
 ```
 
 To run the script as a one-off, it's `sudo python3 led.py`
+
+7. Start a print from octoprint!
+
+<div align="center">
+  <a href="http://neilgupta.github.com/prusa-octoprint-setup/prusa.jpeg">
+    <img width="756px" height="1008px" src="http://neilgupta.github.com/prusa-octoprint-setup/prusa.jpeg" alt="My Prusa MK3S" />
+  </a>
+</div>
