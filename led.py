@@ -4,9 +4,11 @@ import board
 import neopixel
 import random
 import time
+import socket
 import paho.mqtt.client as mqtt
 
-CLIENT_NAME = 'prusa_avocado'
+hostname = socket.gethostname()
+CLIENT_NAME = 'prusa_'+hostname
 MQTT_HOST = 'hiome.local'
 MQTT_PORT = 1883
 

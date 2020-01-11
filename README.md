@@ -84,15 +84,14 @@ cd prusa-octoprint-setup
 3. Install dependencies
 
 ```bash
+sudo apt-get update
 sudo apt-get install -y python3-pip
 sudo pip3 install -r requirements.txt
 ```
 
-4. Install MQTT plugin in Octoprint, configure it to talk to `hiome.local`. This assumes you have [Hiome](https://hiome.com)... if not, get on that first! Set the topic format to `hiome/1/sensor/CLIENT_NAME/` where `CLIENT_NAME` is something like "prusa_octopi"
+4. Install [MQTT plugin](https://github.com/OctoPrint/OctoPrint-MQTT) in Octoprint, configure it to talk to `hiome.local`. This assumes you have [Hiome](https://hiome.com)... if not, get on that first! Set the topic format to `_hiome/1/sensor/CLIENT_NAME/` where `CLIENT_NAME` is "prusa_" + octopi's hostname (ie "prusa_octopi")
 
-5. Edit `CLIENT_NAME` in `led.py` to match the name you used in octoprint's MQTT settings above.
-
-6. Install led systemd service
+5. Install led systemd service
 
 ```bash
 sudo cp octoprint-led.service /etc/systemd/system/octoprint-led.service
@@ -102,7 +101,7 @@ sudo systemctl start octoprint-led.service
 
 To run the script as a one-off, it's `sudo python3 led.py`
 
-7. Start a print from octoprint!
+6. Start a print from octoprint!
 
 <div align="center">
   <a href="https://raw.githubusercontent.com/neilgupta/prusa-octoprint-setup/master/prusa.jpeg">
